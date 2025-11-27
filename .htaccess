@@ -1,4 +1,12 @@
 RewriteEngine On
+
+# Redirection HTTP vers HTTPS
 RewriteCond %{ENV:HTTPS} !on
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Page d'accueil par défaut
+DirectoryIndex index.php index.html
+
+# Redirection des anciennes URLs .html vers .php
+RewriteRule ^index\.html$ index.php [R=301,L]
+RewriteRule ^charte-integrite-coachdec\.html$ charte-integrite.php [R=301,L]
