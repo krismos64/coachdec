@@ -26,7 +26,7 @@ Site vitrine pour le service d'accompagnement au mémoire DEC (Diplôme d'Expert
 - [x] Texte ajouté : `Depuis 2012, Staka met à disposition des experts-comptables stagiaires une équipe d'experts en comptabilité et gestion pour les guider dans leur mémoire de DEC.`
 
 ### 5. Suppressions
-- [ ] Supprimer **"Réussite garantie"** (partout où il apparaît)
+- [x] Supprimer **"Réussite garantie"** (partout où il apparaît)
 - [x] Supprimer le mot **"rédaction"** dans le quiz
 - [x] Supprimer **"Rédaction"** dans le point 4
 
