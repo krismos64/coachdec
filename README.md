@@ -14,32 +14,43 @@ Site vitrine pour le service d'accompagnement au mémoire DEC (Diplôme d'Expert
 - [ ] Configurer l'envoi des formulaires vers **contact@staka.fr**
 
 ### 2. Balises SEO (meta tags)
-- [ ] **Title :** `Accompagnement Mémoire expertise comptable - mémoire DEC`
-- [ ] **Description :** `Accompagnement et coaching mémoire DEC. 12 ans d'expérience. Suivi jusqu'à la réussite. Zéro paiement d'avance.`
-- [ ] **Keywords :** `Notice mémoire DEC, mémoire DEC, coaching mémoire DEC, coaching notice DEC, Choix du sujet mémoire DEC.`
+- [x] **Title :** `Accompagnement Mémoire expertise comptable - mémoire DEC`
+- [x] **Description :** `Accompagnement et coaching mémoire DEC. 12 ans d'expérience. Suivi jusqu'à la réussite. Zéro paiement d'avance.`
+- [x] **Keywords :** `Notice mémoire DEC, mémoire DEC, coaching mémoire DEC, coaching notice DEC, Choix du sujet mémoire DEC.`
 
 ### 3. Texte Hero
-- [ ] Modifier le texte principal en : `Accompagnement complet pour votre mémoire DEC.`
+- [x] H1 modifié en : `Accompagnement Mémoire expertise comptable - mémoire DEC`
+- [x] Sous-titre modifié en : `Accompagnement et coaching mémoire DEC. 12 ans d'expérience. Suivi jusqu'à la réussite. Zéro paiement d'avance.`
 
 ### 4. Section "Notre service d'accompagnement"
-- [ ] Ajouter le texte : `Depuis 2012, Staka met à disposition des experts-comptables stagiaires une équipe d'experts en comptabilité et gestion pour les guider dans leur mémoire de DEC.`
+- [x] Texte ajouté : `Depuis 2012, Staka met à disposition des experts-comptables stagiaires une équipe d'experts en comptabilité et gestion pour les guider dans leur mémoire de DEC.`
 
 ### 5. Suppressions
 - [ ] Supprimer **"Réussite garantie"** (partout où il apparaît)
-- [ ] Supprimer le mot **"rédaction"** dans le quiz
-- [ ] Supprimer **"Rédaction"** dans le point 4
+- [x] Supprimer le mot **"rédaction"** dans le quiz
+- [x] Supprimer **"Rédaction"** dans le point 4
 
 ### 6. Modification Point 4
-- [ ] Nouveau texte : `Suivi personnalisé : Accompagnement continu tout au long de votre travail.`
+- [x] Nouveau texte : `Suivi personnalisé : Accompagnement continu tout au long de votre travail.`
 
 ### 7. Consent Manager (RGPD)
-- [ ] Intégrer le script après le `<head>` :
-```html
-<script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/2be9442962741.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="0"></script>
-```
+- [x] Script Consent Manager intégré dans le `<head>`
 
-### 8. Nouvelle page
-- [ ] Intégrer la page `charte-integrite-coachdec.html` (Charte d'Intégrité Académique)
+### 8. Nouvelle page Charte d'Intégrité
+- [x] Page `charte-integrite.php` créée avec le même header/footer que l'accueil
+- [x] Liens ajoutés dans la navbar et le footer
+
+---
+
+## Migration PHP (27/11/2024)
+
+Le site a été migré de HTML statique vers PHP avec un système d'includes pour partager le header et le footer entre les pages.
+
+### Changements effectués :
+- Création du dossier `includes/` avec les composants partagés
+- Extraction du CSS dans un fichier externe
+- Conversion des pages `.html` en `.php`
+- Mise à jour du `.htaccess` avec redirections
 
 ---
 
@@ -47,22 +58,60 @@ Site vitrine pour le service d'accompagnement au mémoire DEC (Diplôme d'Expert
 
 ```
 /coachdec/
-├── index.html                      # Page principale
-├── charte-integrite-coachdec.html  # Charte d'intégrité académique
-├── .htaccess                       # Configuration Apache (redirect)
-├── htaccess                        # Configuration Apache complète
-└── README.md                       # Ce fichier
+├── index.php                       # Page principale (PHP)
+├── charte-integrite.php            # Charte d'intégrité académique (PHP)
+├── index.html                      # [BACKUP] Ancienne page principale
+├── charte-integrite-coachdec.html  # [BACKUP] Ancienne charte
+├── .htaccess                       # Configuration Apache (HTTPS + redirections)
+├── README.md                       # Ce fichier
+├── includes/
+│   ├── header.php                  # Header commun (navbar, meta tags dynamiques)
+│   ├── footer.php                  # Footer commun
+│   └── legal-modal.php             # Modal mentions légales
+└── assets/
+    └── css/
+        └── style.css               # CSS externalisé
+```
+
+---
+
+## Variables PHP pour les meta tags
+
+Chaque page peut définir ses propres meta tags avant d'inclure le header :
+
+```php
+<?php
+$pageTitle = 'Titre de la page';
+$pageDescription = 'Description de la page';
+$pageKeywords = 'mot-clé1, mot-clé2';
+
+include 'includes/header.php';
+?>
 ```
 
 ---
 
 ## Stack technique
 
-- HTML5 / CSS3 (inline)
+- PHP 7+
+- HTML5 / CSS3
 - JavaScript vanilla
 - EmailJS (envoi formulaires)
 - Google Fonts (Montserrat)
+- Consent Manager (RGPD)
 - Apache (OVH)
+
+---
+
+## Développement local
+
+```bash
+# Lancer le serveur PHP local
+php -S localhost:8000
+
+# Accéder au site
+# http://localhost:8000
+```
 
 ---
 
