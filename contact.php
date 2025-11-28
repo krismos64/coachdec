@@ -111,133 +111,88 @@ $formules_labels = [
 $session_label = $sessions_labels[$session] ?? $session;
 $formule_label = $formules_labels[$formule] ?? $formule;
 
-// Composition de l'email HTML
+// Composition de l'email HTML avec CSS inline (compatible Gmail/Outlook)
 $emailBody = "
 <!DOCTYPE html>
 <html lang='fr'>
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 600;
-        }
-        .content {
-            padding: 30px 20px;
-        }
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        .info-table td {
-            padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        .info-table td:first-child {
-            font-weight: 600;
-            color: #1a365d;
-            width: 40%;
-        }
-        .info-table tr:last-child td {
-            border-bottom: none;
-        }
-        .message-box {
-            background: #f8f9fa;
-            border-left: 4px solid #1a365d;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .footer {
-            background: #f8f9fa;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-        }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 20px 0;
-            font-weight: 600;
-        }
-    </style>
 </head>
-<body>
-    <div class='container'>
-        <div class='header'>
-            <h1>📋 Nouvelle Demande CoachDEC</h1>
-        </div>
-        <div class='content'>
-            <p>Bonjour,</p>
-            <p>Une nouvelle demande d'accompagnement a été soumise via le formulaire de contact.</p>
+<body style='margin: 0; padding: 20px; font-family: Arial, Helvetica, sans-serif; background-color: #f5f5f5;'>
+    <table cellpadding='0' cellspacing='0' border='0' width='100%' style='max-width: 600px; margin: 0 auto;'>
+        <tr>
+            <td>
+                <!-- Container -->
+                <table cellpadding='0' cellspacing='0' border='0' width='100%' style='background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);'>
+                    <!-- Header -->
+                    <tr>
+                        <td style='background-color: #1a365d; padding: 30px 20px; text-align: center;'>
+                            <h1 style='margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;'>📋 Nouvelle Demande CoachDEC</h1>
+                        </td>
+                    </tr>
+                    <!-- Content -->
+                    <tr>
+                        <td style='padding: 30px 20px;'>
+                            <p style='margin: 0 0 15px 0; color: #333333; font-size: 16px;'>Bonjour,</p>
+                            <p style='margin: 0 0 20px 0; color: #333333; font-size: 16px;'>Une nouvelle demande d'accompagnement a été soumise via le formulaire de contact.</p>
 
-            <table class='info-table'>
-                <tr>
-                    <td>Nom</td>
-                    <td><strong>{$nom}</strong></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><a href='mailto:{$email}'>{$email}</a></td>
-                </tr>
-                <tr>
-                    <td>Téléphone</td>
-                    <td>" . ($telephone ? "<a href='tel:{$telephone}'>{$telephone}</a>" : "Non renseigné") . "</td>
-                </tr>
-                <tr>
-                    <td>Session DEC</td>
-                    <td>{$session_label}</td>
-                </tr>
-                <tr>
-                    <td>Formule</td>
-                    <td><strong>{$formule_label}</strong></td>
-                </tr>
-            </table>
+                            <!-- Info Table -->
+                            <table cellpadding='0' cellspacing='0' border='0' width='100%' style='background-color: #f8f9fa; border-radius: 6px; margin: 20px 0;'>
+                                <tr>
+                                    <td style='padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #1a365d; font-weight: 600; width: 40%;'>Nom</td>
+                                    <td style='padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333333;'><strong>{$nom}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style='padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #1a365d; font-weight: 600;'>Email</td>
+                                    <td style='padding: 12px 15px; border-bottom: 1px solid #e0e0e0;'><a href='mailto:{$email}' style='color: #1a365d; text-decoration: none;'>{$email}</a></td>
+                                </tr>
+                                <tr>
+                                    <td style='padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #1a365d; font-weight: 600;'>Téléphone</td>
+                                    <td style='padding: 12px 15px; border-bottom: 1px solid #e0e0e0;'>" . ($telephone ? "<a href='tel:{$telephone}' style='color: #1a365d; text-decoration: none;'>{$telephone}</a>" : "Non renseigné") . "</td>
+                                </tr>
+                                <tr>
+                                    <td style='padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #1a365d; font-weight: 600;'>Session DEC</td>
+                                    <td style='padding: 12px 15px; border-bottom: 1px solid #e0e0e0; color: #333333;'>{$session_label}</td>
+                                </tr>
+                                <tr>
+                                    <td style='padding: 12px 15px; color: #1a365d; font-weight: 600;'>Formule</td>
+                                    <td style='padding: 12px 15px; color: #333333;'><strong>{$formule_label}</strong></td>
+                                </tr>
+                            </table>
 
-            <div class='message-box'>
-                <strong>Message :</strong><br>
-                " . nl2br($message) . "
-            </div>
+                            <!-- Message Box -->
+                            <table cellpadding='0' cellspacing='0' border='0' width='100%' style='margin: 20px 0;'>
+                                <tr>
+                                    <td style='background-color: #f8f9fa; border-left: 4px solid #1a365d; padding: 15px; border-radius: 4px;'>
+                                        <strong style='color: #1a365d;'>Message :</strong><br><br>
+                                        <span style='color: #333333; line-height: 1.6;'>" . nl2br($message) . "</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-            <center>
-                <a href='mailto:{$email}' class='btn'>Répondre au Candidat</a>
-            </center>
-        </div>
-        <div class='footer'>
-            <p><strong>CoachDEC</strong> - Accompagnement Mémoire DEC</p>
-            <p>📞 06 15 07 81 52 | 📧 contact@staka.fr</p>
-            <p style='font-size: 12px; color: #999;'>Email généré le " . date('d/m/Y à H:i') . "</p>
-        </div>
-    </div>
+                            <!-- Button -->
+                            <table cellpadding='0' cellspacing='0' border='0' width='100%' style='margin: 20px 0;'>
+                                <tr>
+                                    <td align='center'>
+                                        <a href='mailto:{$email}' style='display: inline-block; background-color: #1a365d; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;'>Répondre au Candidat</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- Footer -->
+                    <tr>
+                        <td style='background-color: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0;'>
+                            <p style='margin: 0 0 5px 0; color: #666666; font-size: 14px;'><strong>CoachDEC</strong> - Accompagnement Mémoire DEC</p>
+                            <p style='margin: 0 0 10px 0; color: #666666; font-size: 14px;'>📞 06 15 07 81 52 | 📧 contact@staka.fr</p>
+                            <p style='margin: 0; color: #999999; font-size: 12px;'>Email généré le " . date('d/m/Y à H:i') . "</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
 ";
