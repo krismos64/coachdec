@@ -11,7 +11,7 @@ Site vitrine pour le service d'accompagnement au mémoire DEC (Diplôme d'Expert
 ## Modifications demandées par le client (27/11/2024)
 
 ### 1. Formulaire de contact
-- [ ] Configurer l'envoi des formulaires vers **contact@staka.fr**
+- [x] Configurer l'envoi des formulaires vers **contact@staka.fr**
 
 ### 2. Balises SEO (meta tags)
 - [x] **Title :** `Accompagnement Mémoire expertise comptable - mémoire DEC`
@@ -54,15 +54,36 @@ Le site a été migré de HTML statique vers PHP avec un système d'includes pou
 
 ---
 
+## Formulaire de contact PHP (28/11/2024)
+
+### Implémentation
+- Remplacement d'EmailJS par un script PHP natif (`contact.php`)
+- Envoi via `mail()` PHP avec headers optimisés anti-spam
+- Email HTML responsive avec CSS inline (compatible Gmail/Outlook)
+
+### Fonctionnalités
+- **Destinataire :** contact@staka.fr
+- **Expéditeur :** noreply@coachdec.fr (boîte créée sur OVH)
+- **Protection anti-spam :** Honeypot + Rate limiting (1 envoi/minute/IP)
+- **Validation :** Champs obligatoires côté serveur
+- **Format :** Email HTML avec template professionnel
+
+### Prérequis OVH
+- Boîte email `noreply@coachdec.fr` créée sur OVH
+- DKIM activé pour le domaine
+
+---
+
 ## Structure du projet
 
 ```
 /coachdec/
 ├── index.php                       # Page principale (PHP)
+├── contact.php                     # Traitement formulaire de contact
 ├── charte-integrite.php            # Charte d'intégrité académique (PHP)
 ├── index.html                      # [BACKUP] Ancienne page principale
 ├── charte-integrite-coachdec.html  # [BACKUP] Ancienne charte
-├── .htaccess                       # Configuration Apache (HTTPS + redirections)
+├── .htaccess                       # Configuration Apache (HTTPS, cache, sécurité)
 ├── README.md                       # Ce fichier
 ├── includes/
 │   ├── header.php                  # Header commun (navbar, meta tags dynamiques)
@@ -95,8 +116,8 @@ include 'includes/header.php';
 
 - PHP 7+
 - HTML5 / CSS3
-- JavaScript vanilla
-- EmailJS (envoi formulaires)
+- JavaScript vanilla (AJAX fetch)
+- mail() PHP natif (envoi formulaires)
 - Google Fonts (Montserrat)
 - Consent Manager (RGPD)
 - Apache (OVH)
