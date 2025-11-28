@@ -131,17 +131,25 @@ Date : " . date('d/m/Y à H:i') . "
 ═══════════════════════════════════════════════════════
 ";
 
-// Headers de l'email
-$headers = [
-    'From: CoachDEC <noreply@coachdec.fr>',
-    'Reply-To: ' . $nom . ' <' . $email . '>',
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    'X-Mailer: PHP/' . phpversion()
-];
+// Headers de l'email - Optimisés anti-spam (même config que coachtfe.fr)
+$expediteur = 'noreply@coachdec.fr';
+$headers = "From: CoachDEC.fr <" . $expediteur . ">\r\n";
+$headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "Return-Path: " . $expediteur . "\r\n";
+$headers .= "Organization: CoachDEC.fr\r\n";
+$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+$headers .= "X-Originating-IP: " . $_SERVER['SERVER_ADDR'] . "\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$headers .= "Content-Transfer-Encoding: 8bit\r\n";
+$headers .= "X-Priority: 3\r\n";
+$headers .= "Importance: Normal\r\n";
+$headers .= "X-MSMail-Priority: Normal\r\n";
+$headers .= "Message-ID: <" . time() . "-" . md5($email . time()) . "@coachdec.fr>\r\n";
+$headers .= "Date: " . date('r') . "\r\n";
 
-// Envoi de l'email (avec -f pour OVH)
-$envoi = mail($destinataire, $sujet, $corps, implode("\r\n", $headers), '-f noreply@coachdec.fr');
+// Envoi de l'email
+$envoi = mail($destinataire, $sujet, $corps, $headers);
 
 if ($envoi) {
     $response['success'] = true;
