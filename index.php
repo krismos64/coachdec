@@ -688,7 +688,10 @@ include 'includes/header.php';
               </div>
             </div>
 
-            <form class="contact-form" id="contact-form">
+            <form class="contact-form" id="contact-form" method="POST" action="contact.php">
+              <!-- Honeypot anti-spam (champ caché) -->
+              <input type="text" name="website" style="display: none;" tabindex="-1" autocomplete="off" />
+
               <div class="form-group">
                 <label for="nom">Nom *</label>
                 <input type="text" id="nom" name="nom" required />
@@ -778,16 +781,8 @@ include 'includes/header.php';
 
 <?php include 'includes/legal-modal.php'; ?>
 
-    <!-- EmailJS Script -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
     <script type="text/javascript">
-      // Initialize EmailJS
-      emailjs.init("V5-pQb2ALCPySg7Ol");
-
-      // Initialize EmailJS when page loads
+      // Initialize when page loads
       document.addEventListener("DOMContentLoaded", function () {
         // Burger menu functionality
         const burgerMenu = document.getElementById("burger-menu");
@@ -816,7 +811,7 @@ include 'includes/header.php';
           });
         }
 
-        // EmailJS Form submission
+        // PHP Form submission via AJAX
         const contactForm = document.getElementById("contact-form");
         if (contactForm) {
           contactForm.addEventListener("submit", function (event) {
@@ -829,32 +824,31 @@ include 'includes/header.php';
             submitBtn.textContent = "Envoi en cours...";
             submitBtn.disabled = true;
 
-            // Send email using EmailJS
-            emailjs.sendForm("service_bj4g45e", "template_gd3qrbx", this).then(
-              () => {
-                console.log("Email envoyé avec succès!");
-                alert(
-                  "✅ Demande envoyée avec succès ! Notre expert DEC vous contacte sous 2h pour votre consultation gratuite."
-                );
+            // Create FormData from the form
+            const formData = new FormData(this);
 
-                // Reset form
+            // Send via fetch to contact.php
+            fetch("contact.php", {
+              method: "POST",
+              body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert("✅ " + data.message);
                 contactForm.reset();
-
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-              },
-              (error) => {
-                console.error("Erreur lors de l'envoi:", error);
-                alert(
-                  "❌ Erreur lors de l'envoi. Veuillez réessayer ou nous contacter directement au 06 15 07 81 52."
-                );
-
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+              } else {
+                alert("❌ " + data.message);
               }
-            );
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+            })
+            .catch(error => {
+              console.error("Erreur:", error);
+              alert("❌ Erreur lors de l'envoi. Veuillez nous contacter directement au 06 15 07 81 52.");
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+            });
           });
         }
 
