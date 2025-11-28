@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Configuration email
-define('EMAIL_TO', 'christophe.mostefaoui.dev@gmail.com'); // TODO: Changer pour contact@staka.fr en production
+define('EMAIL_TO', 'contact@staka.fr');
 define('EMAIL_SUBJECT', '📋 Nouvelle demande CoachDEC');
 define('EMAIL_FROM', 'noreply@coachdec.fr');
 
