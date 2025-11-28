@@ -171,14 +171,6 @@ $emailBody = "
                                 </tr>
                             </table>
 
-                            <!-- Button -->
-                            <table cellpadding='0' cellspacing='0' border='0' width='100%' style='margin: 20px 0;'>
-                                <tr>
-                                    <td align='center'>
-                                        <a href='mailto:{$email}' style='display: inline-block; background-color: #1a365d; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;'>Répondre au Candidat</a>
-                                    </td>
-                                </tr>
-                            </table>
                         </td>
                     </tr>
                     <!-- Footer -->
