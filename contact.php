@@ -133,7 +133,7 @@ Date : " . date('d/m/Y à H:i') . "
 
 // Headers de l'email
 $headers = [
-    'From: CoachDEC <contact@coachdec.fr>',
+    'From: CoachDEC <noreply@coachdec.fr>',
     'Reply-To: ' . $nom . ' <' . $email . '>',
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
@@ -141,7 +141,7 @@ $headers = [
 ];
 
 // Envoi de l'email (avec -f pour OVH)
-$envoi = mail($destinataire, $sujet, $corps, implode("\r\n", $headers), '-f contact@coachdec.fr');
+$envoi = mail($destinataire, $sujet, $corps, implode("\r\n", $headers), '-f noreply@coachdec.fr');
 
 if ($envoi) {
     $response['success'] = true;
