@@ -10,7 +10,7 @@ include 'includes/header.php';
 
     <section class="hero">
       <div class="container">
-        <h1>Accompagnement Mémoire expertise comptable - mémoire DEC</h1>
+        <h1>Accompagnement mémoire expertise comptable - mémoire DEC</h1>
         <p>
           Accompagnement et coaching mémoire DEC. 12 ans d'expérience. Suivi
           jusqu'à la réussite. Zéro paiement d'avance.

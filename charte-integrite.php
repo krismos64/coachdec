@@ -580,20 +580,6 @@ include 'includes/header.php';
                         <span>Chaque mémoire est unique et original</span>
                     </div>
                 </li>
-                <li>
-                    <div class="list-icon error">✕</div>
-                    <div class="list-content">
-                        <strong>Substitution au candidat lors des échanges avec le jury</strong>
-                        <span>La soutenance est votre moment, pas le nôtre</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-icon error">✕</div>
-                    <div class="list-content">
-                        <strong>Garantie de résultat sur la décision du jury</strong>
-                        <span>Le jury est indépendant — nous maximisons vos chances, sans promettre l'impossible</span>
-                    </div>
-                </li>
             </ul>
         </section>
 
