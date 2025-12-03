@@ -25,7 +25,7 @@
                   font-size: 1.8rem;
                   font-weight: 700;
                 "
-                >Staka</span
+                >Coachdec</span
               >
             </div>
             <p

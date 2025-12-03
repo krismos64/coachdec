@@ -120,7 +120,7 @@ $baseUrl = $isHomePage ? '' : 'index.php';
                 font-size: 2rem;
                 font-weight: 700;
               "
-              >Staka</span
+              >Coachdec</span
             >
           </a>
           <div class="burger-menu" id="burger-menu">
