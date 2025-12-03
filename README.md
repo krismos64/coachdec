@@ -1,6 +1,7 @@
 # CoachDEC - Site d'accompagnement mémoire DEC
 
 ## Description
+
 Site vitrine pour le service d'accompagnement au mémoire DEC (Diplôme d'Expertise Comptable) proposé par Staka.
 
 **URL de production :** https://coachdec.fr
@@ -11,32 +12,40 @@ Site vitrine pour le service d'accompagnement au mémoire DEC (Diplôme d'Expert
 ## Modifications demandées par le client (27/11/2024)
 
 ### 1. Formulaire de contact
+
 - [x] Configurer l'envoi des formulaires vers **contact@staka.fr**
 
 ### 2. Balises SEO (meta tags)
+
 - [x] **Title :** `Accompagnement Mémoire expertise comptable - mémoire DEC`
 - [x] **Description :** `Accompagnement et coaching mémoire DEC. 12 ans d'expérience. Suivi jusqu'à la réussite. Zéro paiement d'avance.`
 - [x] **Keywords :** `Notice mémoire DEC, mémoire DEC, coaching mémoire DEC, coaching notice DEC, Choix du sujet mémoire DEC.`
 
 ### 3. Texte Hero
+
 - [x] H1 modifié en : `Accompagnement Mémoire expertise comptable - mémoire DEC`
 - [x] Sous-titre modifié en : `Accompagnement et coaching mémoire DEC. 12 ans d'expérience. Suivi jusqu'à la réussite. Zéro paiement d'avance.`
 
 ### 4. Section "Notre service d'accompagnement"
+
 - [x] Texte ajouté : `Depuis 2012, Staka met à disposition des experts-comptables stagiaires une équipe d'experts en comptabilité et gestion pour les guider dans leur mémoire de DEC.`
 
 ### 5. Suppressions
+
 - [x] Supprimer **"Réussite garantie"** (partout où il apparaît)
 - [x] Supprimer le mot **"rédaction"** dans le quiz
 - [x] Supprimer **"Rédaction"** dans le point 4
 
 ### 6. Modification Point 4
+
 - [x] Nouveau texte : `Suivi personnalisé : Accompagnement continu tout au long de votre travail.`
 
 ### 7. Consent Manager (RGPD)
+
 - [x] Script Consent Manager intégré dans le `<head>`
 
 ### 8. Nouvelle page Charte d'Intégrité
+
 - [x] Page `charte-integrite.php` créée avec le même header/footer que l'accueil
 - [x] Liens ajoutés dans la navbar et le footer
 
@@ -45,9 +54,11 @@ Site vitrine pour le service d'accompagnement au mémoire DEC (Diplôme d'Expert
 ## Modifications demandées par le client (03/12/2025)
 
 ### Contexte
+
 Google Ads suspecte le site de plagiat. Le client demande des modifications SEO pour clarifier le positionnement "accompagnement méthodologique" et non "rédaction à la place du candidat".
 
 ### 1. Schema.org JSON-LD (Données structurées)
+
 - [x] Ajout du script `EducationalOrganization` dans le `<head>`
 - Type : Organisation éducative
 - Services : Accompagnement méthodologique DEC, Guidance mémoire, Coaching anti-plagiat
@@ -55,10 +66,12 @@ Google Ads suspecte le site de plagiat. Le client demande des modifications SEO 
 - Membre de : Ordre des Experts-Comptables
 
 ### 2. Meta tags mis à jour
+
 - [x] **Description :** `Accompagnement méthodologique pour votre mémoire DEC. Guidance par des experts comptables, méthodologie éprouvée et contrôle anti-plagiat systématique. Vous rédigez, nous vous guidons.`
 - [x] **Keywords :** `accompagnement mémoire DEC, méthodologie DEC, coaching expert comptable, anti-plagiat DEC, guidance agrément mémoire`
 
 ### 3. Balises Open Graph ajoutées
+
 - [x] `og:title` : CoachDEC - Accompagnement Méthodologique Mémoire DEC
 - [x] `og:description` : Des experts comptables vous guident dans la méthodologie de VOTRE mémoire DEC. Accompagnement personnalisé avec contrôle anti-plagiat.
 - [x] `og:type` : website
@@ -73,6 +86,7 @@ Google Ads suspecte le site de plagiat. Le client demande des modifications SEO 
 Le site a été migré de HTML statique vers PHP avec un système d'includes pour partager le header et le footer entre les pages.
 
 ### Changements effectués :
+
 - Création du dossier `includes/` avec les composants partagés
 - Extraction du CSS dans un fichier externe
 - Conversion des pages `.html` en `.php`
@@ -83,11 +97,13 @@ Le site a été migré de HTML statique vers PHP avec un système d'includes pou
 ## Formulaire de contact PHP (28/11/2024)
 
 ### Implémentation
+
 - Remplacement d'EmailJS par un script PHP natif (`contact.php`)
 - Envoi via `mail()` PHP avec headers optimisés anti-spam
 - Email HTML responsive avec CSS inline (compatible Gmail/Outlook)
 
 ### Fonctionnalités
+
 - **Destinataire :** contact@staka.fr
 - **Expéditeur :** noreply@coachdec.fr (boîte créée sur OVH)
 - **Protection anti-spam :** Honeypot + Rate limiting (1 envoi/minute/IP)
@@ -95,6 +111,7 @@ Le site a été migré de HTML statique vers PHP avec un système d'includes pou
 - **Format :** Email HTML avec template professionnel
 
 ### Prérequis OVH
+
 - Boîte email `noreply@coachdec.fr` créée sur OVH
 - DKIM activé pour le domaine
 
@@ -165,4 +182,3 @@ php -S localhost:8000
 ## Contact
 
 **Client :** Staka
-**Email :** contact@staka.fr
