@@ -42,6 +42,32 @@ Site vitrine pour le service d'accompagnement au mémoire DEC (Diplôme d'Expert
 
 ---
 
+## Modifications demandées par le client (03/12/2025)
+
+### Contexte
+Google Ads suspecte le site de plagiat. Le client demande des modifications SEO pour clarifier le positionnement "accompagnement méthodologique" et non "rédaction à la place du candidat".
+
+### 1. Schema.org JSON-LD (Données structurées)
+- [x] Ajout du script `EducationalOrganization` dans le `<head>`
+- Type : Organisation éducative
+- Services : Accompagnement méthodologique DEC, Guidance mémoire, Coaching anti-plagiat
+- Enseignements : Méthodologie, Normes de citation, Prévention du plagiat, Déontologie
+- Membre de : Ordre des Experts-Comptables
+
+### 2. Meta tags mis à jour
+- [x] **Description :** `Accompagnement méthodologique pour votre mémoire DEC. Guidance par des experts comptables, méthodologie éprouvée et contrôle anti-plagiat systématique. Vous rédigez, nous vous guidons.`
+- [x] **Keywords :** `accompagnement mémoire DEC, méthodologie DEC, coaching expert comptable, anti-plagiat DEC, guidance agrément mémoire`
+
+### 3. Balises Open Graph ajoutées
+- [x] `og:title` : CoachDEC - Accompagnement Méthodologique Mémoire DEC
+- [x] `og:description` : Des experts comptables vous guident dans la méthodologie de VOTRE mémoire DEC. Accompagnement personnalisé avec contrôle anti-plagiat.
+- [x] `og:type` : website
+- [x] `og:url` : https://coachdec.fr
+- [x] `og:locale` : fr_FR
+- [x] `og:site_name` : CoachDEC
+
+---
+
 ## Migration PHP (27/11/2024)
 
 Le site a été migré de HTML statique vers PHP avec un système d'includes pour partager le header et le footer entre les pages.
