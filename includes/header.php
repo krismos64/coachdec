@@ -1,8 +1,12 @@
 <?php
 // Variables par défaut pour les meta tags
 $pageTitle = $pageTitle ?? 'Accompagnement Mémoire expertise comptable - mémoire DEC';
-$pageDescription = $pageDescription ?? 'Accompagnement et coaching mémoire DEC. 12 ans d\'expérience. Suivi jusqu\'à la réussite. Zéro paiement d\'avance.';
-$pageKeywords = $pageKeywords ?? 'Notice mémoire DEC, mémoire DEC, coaching mémoire DEC, coaching notice DEC, Choix du sujet mémoire DEC.';
+$pageDescription = $pageDescription ?? 'Accompagnement méthodologique pour votre mémoire DEC. Guidance par des experts comptables, méthodologie éprouvée et contrôle anti-plagiat systématique. Vous rédigez, nous vous guidons.';
+$pageKeywords = $pageKeywords ?? 'accompagnement mémoire DEC, méthodologie DEC, coaching expert comptable, anti-plagiat DEC, guidance agrément mémoire';
+
+// Variables Open Graph
+$ogTitle = $ogTitle ?? 'CoachDEC - Accompagnement Méthodologique Mémoire DEC';
+$ogDescription = $ogDescription ?? 'Des experts comptables vous guident dans la méthodologie de VOTRE mémoire DEC. Accompagnement personnalisé avec contrôle anti-plagiat.';
 
 // Déterminer si on est sur la page d'accueil
 $isHomePage = basename($_SERVER['PHP_SELF']) === 'index.php';
@@ -24,6 +28,43 @@ $baseUrl = $isHomePage ? '' : 'index.php';
     <title><?php echo htmlspecialchars($pageTitle); ?></title>
     <meta name="description" content="<?php echo htmlspecialchars($pageDescription); ?>" />
     <meta name="keywords" content="<?php echo htmlspecialchars($pageKeywords); ?>" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="<?php echo htmlspecialchars($ogTitle); ?>">
+    <meta property="og:description" content="<?php echo htmlspecialchars($ogDescription); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://coachdec.fr">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="CoachDEC">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "CoachDEC.fr",
+      "description": "Plateforme d'accompagnement méthodologique pour mémoire DEC avec contrôle anti-plagiat et respect de la déontologie professionnelle",
+      "url": "https://coachdec.fr",
+      "serviceType": [
+        "Accompagnement méthodologique DEC",
+        "Guidance mémoire expertise comptable",
+        "Coaching anti-plagiat professionnel"
+      ],
+      "areaServed": "FR",
+      "educationalCredentialAwarded": "Diplôme d'Expertise Comptable (DEC)",
+      "teaches": [
+        "Méthodologie de recherche professionnelle",
+        "Démarche scientifique en expertise comptable",
+        "Normes de citation académique",
+        "Prévention du plagiat",
+        "Déontologie professionnelle"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Ordre des Experts-Comptables"
+      }
+    }
+    </script>
 
     <!-- Favicon -->
     <link
